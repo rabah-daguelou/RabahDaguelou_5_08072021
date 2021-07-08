@@ -1,0 +1,114 @@
+/* début header */
+body {
+	margin: 0;
+	padding: 0;
+	background:#F0EAF5;
+
+}
+header {
+	height: 50px;
+	background-color: #f3e9f1;
+	border-bottom: 1px solid #C5AADC;
+}
+
+ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-right: 10%;
+}
+
+i{
+	font-size: 20px;
+	color: #7808D8;
+}
+
+li {
+	list-style-type: none;
+	line-height: 45px;
+	font-weight: 900;
+}
+
+li:hover {
+	background-color: #CFC3D9;
+	cursor: pointer;
+	border-bottom: 5px solid #7808D8;
+	padding: 0 5px;
+}
+a:hover{
+	text-decoration: none;
+}
+
+
+/* fin header */
+
+/* Début section 1 */
+img{
+	object-fit: cover;
+}
+#nos-produits {
+	max-width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	
+}
+
+/* Les cartes */
+.carte_produit{
+	width: 300px;
+	height: 280px;
+	background-color: #fff;
+	border-radius:10px;
+	margin-top: 40px;
+	box-shadow: 2px 2px 5px #C890F7;
+	transition: transform .5s;
+}
+.carte_produit:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	box-shadow: 2px 2px 5px #000;
+
+}
+.image_produit {
+	width: 100%;
+	height: 240px;
+	background-color: white;
+	border-radius: 10px 10px 0 0;
+}
+
+.nomEtprix_produit {
+	width: 100%;
+	height:40px;
+	display: flex;
+	justify-content: space-between;
+	background-color: #000;
+	color: #fff;
+	border-radius: 0 0 10px 10px;
+	padding: 0 6px;
+	line-height: 40px;
+	font-weight: 600;
+}
+
+/* Aside page produit */
+.achat{
+	width: 80%;
+	margin: auto;
+	background-color: #F2EDF6;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+#selection {
+	width: 300px;
+	height: 280px;
+	background-color: #fff;
+	border-radius:10px;
+	margin-top: 40px;
+	box-shadow: 2px 2px 5px #C890F7;
+}
+
+#choix_couleur {
+	font-size: 12px;
+	font-weight: 600;
+}
