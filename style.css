@@ -109,7 +109,40 @@ img{
 	text-align: center;
 }
 
-#titre_couleur {
-	font-size: 12px;
+h2 {
+	font-size: 14px;
 	font-weight: 600;
+	margin-top: 20px;
+}
+
+select {
+	width: 80%;
+	height: 40px;
+	border-radius: 5px;
+	background-color:#E0CBF1;
+}
+input {
+	outline: none;
+	width: 70px;
+	height: 40px;
+	border-radius: 5px;
+	background-color:#E0CBF1;
+	text-align: center;
+}
+button {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 30px auto;
+	width: 80%;
+	height: 50px;
+	border-radius: 20px;
+	background-color:#E0CBF1;
+	box-shadow: 2px 2px 5px #D3B0EF; 
+	font-weight: 600;
+	transition: transform .5s;
+}
+button:hover{
+	box-shadow: 2px 2px 5px #000;
+	transform: scale(1.05);
 }

@@ -39,9 +39,7 @@ fetch(api)
 		nom_produit.textContent=data[i].name;
 		nomEtprix_produit.appendChild(prix_produit).classList.add("prix_produit")
 		prix_produit.textContent=data[i].price/100+",00 €"
-
-		
-}
+		}
 
 
 

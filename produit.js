@@ -1,11 +1,8 @@
 const lienId=window.location.search;
-console.log(lienId);
 const idLien=lienId.slice(1);
-console.log(idLien);
 
 let api="http://localhost:3000/api/teddies"
 let api2=api+"/"+idLien
-console.log(api2);
 
 fetch(api2)		
 	.then((res)=>res.json())
@@ -53,7 +50,18 @@ fetch(api2)
 			const choix=document.createElement("option");
 			let choix_couleur=document.getElementById("choix_couleur");
 			choix_couleur.appendChild(choix).textContent=data.colors[i];
-		}
-		
-		});	
+			}
+			
+		// Gérer la quantité choisie
+			
+		const quantite_choisie=document.getElementById("quantite_commandee");
+		quantite_commandee.addEventListener("input", function(a){
+				let quant=document.getElementById('quantite_commandee').value;
+				document.getElementById('q').innerText=quant;
+		});
+			
+
+
+
+			});	
 
