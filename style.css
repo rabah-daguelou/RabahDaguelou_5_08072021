@@ -106,9 +106,10 @@ img{
 	border-radius:10px;
 	margin-top: 40px;
 	box-shadow: 2px 2px 5px #C890F7;
+	text-align: center;
 }
 
-#choix_couleur {
+#titre_couleur {
 	font-size: 12px;
 	font-weight: 600;
 }

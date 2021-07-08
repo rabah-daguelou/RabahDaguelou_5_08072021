@@ -20,12 +20,14 @@ fetch(api2)
 		const nom_produit=document.createElement("p");
 		const prix_produit=document.createElement("p");
 		const lien=document.createElement("a");
+		
+		
 		// Insérer les éléments
 
 		//insérer la div carte
 
 		let carte_produit=document.getElementById('nos-produits');
-		carte_produit.appendChild(lien).href="prduit.html?";
+		carte_produit.appendChild(lien).href="#";
 
 		lien.appendChild(carte).classList.add("carte_produit");
 
@@ -45,6 +47,13 @@ fetch(api2)
 
 		let produit_selectionne=document.getElementById('produit_selectionne')
 		.textContent=data.name;
+
+		// Insérer les options choix de couleurs
+		for (var i = 0; i <data.colors.length; i++) {
+			const choix=document.createElement("option");
+			let choix_couleur=document.getElementById("choix_couleur");
+			choix_couleur.appendChild(choix).textContent=data.colors[i];
+		}
 		
-	});
+		});	
 
