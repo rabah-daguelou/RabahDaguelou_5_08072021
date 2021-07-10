@@ -1,3 +1,4 @@
+
 // Récupération de tous les produits de l'API via Fetch
 let api="http://localhost:3000/api/teddies"
 
@@ -19,6 +20,7 @@ fetch(api)
 		const nom_produit=document.createElement("p");
 		const prix_produit=document.createElement("p");
 		const lien=document.createElement("a");
+
 		// Insérer les éléments
 
 		//insérer la div carte
@@ -41,7 +43,12 @@ fetch(api)
 		prix_produit.textContent=data[i].price/100+",00 €"
 		}
 
-
+/* une fonction globale 
+		let prix=changerPrix(data.price);
+		function changerPrix(price) {
+		return price/100
+		}
+*/
 
 	});
 

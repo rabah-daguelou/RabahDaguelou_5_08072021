@@ -73,35 +73,41 @@
 <main>
 	<h1 class="text-center" id="produit_selectionne"> </h1>
 	
-<!-- Section des produits -->
+<!-- Section du produit sélectionné -->
 	<div class="achat">
 		<section id="nos-produits">
 
-<!-- Infos sur le produit, choix couleur, quantité, ajout panier -->
-				
 		</section>
-		<aside id="selection">
+
+<!-- Infos sur le produit, choix couleur, quantité, ajout panier -->
+		<div id="selection">
 			<h2 id="titre_couleur"> Choisir la couleur du nounours</h2>
-			<select id="choix_couleur">
-				
+			<select id="choix_couleur">	
 				
 			</select>		
-			<h2> Quantité  </h2>
+			<h2> Choisir la quantité  </h2>
 			<div class="quantite">
 				<div class="quantite-articles">
 					<input type="number" id="quantite_commandee" min="0" value="0">
 				</div>
 			</div>
+			
+		</div>
+
+		<div class=" ajouter_panier carte_produit ">	
+			<h2> Quantité commandée :&ensp; <span id="quant_com"></span></h2>
+			<h2> Prix total:&ensp; <span id="prix_total"></span></h2>
 			<div class="ajouter">
-				<button>
+				<a href="panier.html">
+					<button id="panier">
 					<i class="fas fa-shopping-cart"></i><span> Ajouter au panier</span>
+				</button></a>
+				<br>
+				<button id="vider_panier">
+					<i class="fas fa-cart-arrow-down"></i><span> Vider le panier</span>
 				</button>
-				
 			</div>
-
-
-		</aside>
-		<p > Quantité commandée:<span id="q"></span></p>
+		</div>
 	</div>
 </main>
 <!-- Fin Main -->

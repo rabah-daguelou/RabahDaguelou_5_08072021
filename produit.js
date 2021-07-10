@@ -8,7 +8,6 @@ fetch(api2)
 	.then((res)=>res.json())
 	
 	.then((data)=>{
-
 		//Création des éléments html de la carte produit 
 		
 		const carte=document.createElement("div");
@@ -46,22 +45,51 @@ fetch(api2)
 		.textContent=data.name;
 
 		// Insérer les options choix de couleurs
-		for (var i = 0; i <data.colors.length; i++) {
+		for (var couleur = 0; couleur <data.colors.length; couleur++) {
 			const choix=document.createElement("option");
 			let choix_couleur=document.getElementById("choix_couleur");
-			choix_couleur.appendChild(choix).textContent=data.colors[i];
+			choix_couleur.appendChild(choix).textContent=data.colors[couleur];
 			}
 			
 		// Gérer la quantité choisie
-			
+		
+
+		let quant=document.getElementById('quantite_commandee').value;
+		document.getElementById('quant_com').innerText=quant;	
+		
+		let prix_total=0;
+			document.getElementById('prix_total').innerText=prix_total+" €";
 		const quantite_choisie=document.getElementById("quantite_commandee");
-		quantite_commandee.addEventListener("input", function(a){
+		quantite_commandee.addEventListener("input", function(){
 				let quant=document.getElementById('quantite_commandee').value;
-				document.getElementById('q').innerText=quant;
-		});
+				document.getElementById('quant_com').innerText=quant;
+		
+		prix_total=data.price/100*quant;
+		document.getElementById('prix_total').innerText=prix_total+" €";
+
+
+// Local storage
+panier.onclick=()=> {
+    const panier={
+    	nom:produit_selectionne,
+			couleur:data.colors[couleur],
+			quantite:parseInt(quant),
+			prix_unitaire:data.price/100,
+			prix:prix_total
+        
+    }
+    // transforme l'objet en format json
+    localStorage.setItem("Panier",JSON.stringify(Panier));
+    // Rafrichir la page
+    document.location.reload();
+}
 			
+});
 
 
 
-			});	
+	});
+	
+		
+
 
