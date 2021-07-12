@@ -61,7 +61,8 @@
 	<nav class="container">
 		<ul>
 			<li> <a href="index.html"> <img class="logo" src="images/logo.png" width="100"></a></li>
-			<li> Mon panier <i class="fas fa-shopping-cart"></i></li>
+			<li> Mon panier <i class="fas fa-shopping-cart"></i>
+				<span id="total_article"></span></li>
 		</ul>
 
 	</nav>
@@ -96,7 +97,7 @@
 	<!-- Formulaire -->
 
 	<section>
-		<form method="post" action="traitement.php">
+		<form method="post" action="#">
 			<label for="nom"> 1. Nom: </label>
 			<input type="text" name="nom" id="nom" placeholder="Votre nom">
 			<label for="prenom"> 2. Prénom: </label>
@@ -105,7 +106,10 @@
 			<input type="text" name="adresse" id="adresse" >
 			<label for="code_postal"> 4. Code postal: </label>
 			<input type="number" name="code_postal" id="code_postal">
-			<button> Commander </button>
+
+			<a href="commande.html">
+			<button id="confirmer_commande"> Confirmer votre commande </button></a>
+
 		</form>
 	</section>
 

@@ -1,3 +1,14 @@
+let total=0;
+if (localStorage.getItem("paniers")!=null){
+	paniers=JSON.parse(localStorage.getItem("paniers"));
+	
+	for (var i = 0; i<paniers.length; i++) {
+		total=total+paniers[i].quantite;
+	}
+	console.log(total);
+	document.getElementById("total_article").innerText=total;
+	}
+
 
 // Récupération de tous les produits de l'API via Fetch
 let api="http://localhost:3000/api/teddies"

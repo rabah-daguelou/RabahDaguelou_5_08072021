@@ -61,7 +61,8 @@
 	<nav class="container">
 		<ul>
 			<li> <a href="index.html"> <img class="logo" src="images/logo.png" width="100"></a></li>
-			<li> Mon panier <i class="fas fa-shopping-cart"></i></li>
+			<li> Mon panier <i class="fas fa-shopping-cart"></i>
+				<span id="total_article">0</span></li>
 		</ul>
 
 	</nav>
@@ -97,16 +98,20 @@
 		<div class=" ajouter_panier carte_produit ">	
 			<h2> Quantité commandée :&ensp; <span id="quant_com"></span></h2>
 			<h2> Prix total:&ensp; <span id="prix_total"></span></h2>
+			
 			<div class="ajouter">
-				<a href="panier.html">
+				
 					<button id="panier">
-					<i class="fas fa-shopping-cart"></i><span> Ajouter au panier</span>
-				</button></a>
+					<i class="fas fa-cart-plus"></i><span> Ajouter au panier</span>
+					</button>
+				
 				<br>
+				
 				<button id="vider_panier">
 					<i class="fas fa-cart-arrow-down"></i><span> Vider le panier</span>
 				</button>
 			</div>
+
 		</div>
 	</div>
 </main>
