@@ -38,7 +38,17 @@ li:hover {
 a:hover{
 	text-decoration: none;
 }
-
+#total_article,.nombre_article{
+	display: inline-block;
+	width: 24px;
+	height:24px;
+	border-radius: 12px;
+	background-color: red;
+	color: #fff;
+	line-height: 24px;
+	text-align: center;
+	font-size: 12px;
+}
 
 /* fin header */
 
@@ -77,8 +87,12 @@ img{
 	background-color: white;
 	border-radius: 10px 10px 0 0;
 }
-
-.nomEtprix_produit {
+.image_produit_mini {
+	width: 60%;
+	height: 50%;
+	border-radius: 10px;
+}
+.nomEtprix_produit,.nomEtprix_produit_mini {
 	width: 100%;
 	height:40px;
 	display: flex;
@@ -90,7 +104,10 @@ img{
 	line-height: 40px;
 	font-weight: 600;
 }
-
+.nomEtprix_produit_mini {
+	border-radius: 0;
+	background-color: grey;
+}
 /* page produit */
 
 /* Aside */
@@ -175,4 +192,24 @@ button:hover{
 	font-weight: 600;
 	width: 20%;
 	
+}
+.carte_produit_mini{
+	width: 200px;
+	height: 180px;
+	background-color: #fff;
+	border-radius:10px;
+	margin-top: 40px;
+	box-shadow: 2px 2px 5px #C890F7;
+	transition: transform .5s;
+	text-align: left;
+	margin-bottom: 20px;
+}
+.prix_total {
+	text-align: center;
+	background-color: #000;
+	color: #fff;
+	height: 40px;
+	margin-top: 10px;
+	border-radius: 0 0 10px 10px;
+	line-height: 40px;
 }

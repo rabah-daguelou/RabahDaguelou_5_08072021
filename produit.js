@@ -1,8 +1,4 @@
-// Récupération du nombre de produits s'il existent 
 
-
-	
-	
 // Récupération de l'API via l'id
 const lienId=window.location.search;
 const idLien=lienId.slice(1);
@@ -40,18 +36,7 @@ fetch(api2)
 		carte.appendChild(image_produit).classList.add("image_produit");
 		image_produit.src=data.imageUrl;
 		
-		// Insérer le nom  du produit dans la carte
-		carte.appendChild(nomEtprix_produit).classList.add("nomEtprix_produit")
-		nomEtprix_produit.appendChild(nom_produit).classList.add("nom_produit")
-		nom_produit.textContent=data.name;
-
-		// Récupérer le nom du produit
-		let produit_selectionne=document.getElementById('produit_selectionne')
-		.textContent=data.name;
-
-		// Insérer le prix du produit
-		nomEtprix_produit.appendChild(prix_produit).classList.add("prix_produit")
-		prix_produit.textContent=data.price/100+",00 €"
+		
 
 		// Insérer les options choix de couleurs
 		for (var couleur = 0; couleur <data.colors.length; couleur++) {
@@ -72,7 +57,7 @@ fetch(api2)
 				let quant=document.getElementById('quantite_commandee').value;
 				let quantite=parseInt(quant);
 				document.getElementById('quant_com').innerText=quantite;
-		
+				
 		// Insérer le prix total	
 		prix_total=data.price/100*quantite;
 		document.getElementById('prix_total').innerText=prix_total+" €";
@@ -102,6 +87,7 @@ if (localStorage.getItem("paniers")!=null){
  		// Au clic sur ajouter au panier
  		panier.onclick=()=> {	
  		let couleur=document.getElementById("choix_couleur").value;
+ 		let imageUrl=data.imageUrl;
  		let votrePanier={
 
     		nom:produit_selectionne,
@@ -109,13 +95,14 @@ if (localStorage.getItem("paniers")!=null){
 			quantite:quantite,
 			prix_unitaire:data.price/100,
 			prix:prix_total,
+			url:imageUrl,
 		   } 			
  		
    
 // Ajouter le nombre de produit
 
-total=total+quantite;
-document.getElementById("total_article").innerText=total;
+//total=total+quantite;
+//document.getElementById("total_article").innerText=total;
 
 // Mettre les achats dans le panier
  
@@ -153,7 +140,4 @@ vider_panier.onclick=()=> {
 });
 
 })
-	
-		
-
 
