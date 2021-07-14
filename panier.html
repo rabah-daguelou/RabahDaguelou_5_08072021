@@ -76,31 +76,49 @@
 	
 	
 	<!-- Récapitulatif -->
-	<section >	
+	<section class="recap">	
 
 		<div id="nos-produits" > </div>	
-		
-		<h2 > Votre panier contient: <span id="votre_panier"></span> </h2>
-		<p > Total à payer:  <span id="toal_a_payer"></span></p>
+		<div class="resume">
+			<h2 class="panier"> Votre panier contient: <span id="votre_panier"></span> </h2>
+			<p class="panier"> Total à payer:  <span id="toal_a_payer"></span></p>
+		</div>
 	</section>
 
 	<!-- Formulaire -->
 
-	<section>
-		<form method="post" action="#">
+	<section class="formulaire">
+		<h2 class="merci"> Merci de remplir le formulaire ci-dessous pour passer votre commande </h2><br><br>
+		
+		<form method="post" action="commande.html" name="formulaire">
+			
 			<label for="nom"> 1. Nom: </label>
-			<input type="text" name="nom" id="nom" placeholder="Votre nom">
-			<label for="prenom"> 2. Prénom: </label>
-			<input type="text" name="prenom" id="prenom" placeholder="Votre prénom">
-			<label for="adresse" > 3. Adresse de livraison: </label>
-			<input type="text" name="adresse" id="adresse" >
-			<label for="code_postal"> 4. Code postal: </label>
-			<input type="number" name="code_postal" id="code_postal">
+			<input type="text" name="nom" id="nom" placeholder="Exemple: Dupont" required="required" >
 
-			<a href="commande.html">
-			<button id="confirmer_commande"> Confirmer votre commande </button></a>
+			<label for="prenom"> 2. Prénom: </label> 
+			<input type="text" name="prenom" id="prenom" placeholder="Exemple: Jean" required="required">
+			
+
+			<label for="adresse" > 3. Adresse de livraison: </label>
+			<input type="text" name="adresse" id="adresse" placeholder="Exemple: 04, rue de la Fontaine" required="required">
+			
+			<label for="ville"> 4. Ville: </label> 
+			<input type="text" name="ville" id="ville" placeholder="Exemple: Paris" required="required">
+
+			<label for="code_postal"> 5. Code postal: </label> 
+			<input type="number" name="code_postal" id="code_postal" placeholder="Exemple:75020" required="required">
+			
+			<label for="mail"> 6. E-Mail: </label> 
+			<input type="mail" name="mail" id="mail" placeholder="Exemple: JeanDupont2000@gmail.com" required="required">
+
+			<label for="tel"> 7. N° Tél: </label> 
+			<input type="number" name="tel" id="tel" placeholder="Exemple: 0651524247" required="required" minlength="10" maxlength="10">
+
+			
+			<button id="confirmer_commande"> Confirmer votre commande </button>
 
 		</form>
+
 	</section>
 
 </main>	

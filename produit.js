@@ -1,4 +1,3 @@
-
 // Récupération de l'API via l'id
 const lienId=window.location.search;
 const idLien=lienId.slice(1);
@@ -57,7 +56,7 @@ fetch(api2)
 				let quant=document.getElementById('quantite_commandee').value;
 				let quantite=parseInt(quant);
 				document.getElementById('quant_com').innerText=quantite;
-				
+				document.getElementById('total_article').innerText=quantite;
 		// Insérer le prix total	
 		prix_total=data.price/100*quantite;
 		document.getElementById('prix_total').innerText=prix_total+" €";
@@ -88,9 +87,10 @@ if (localStorage.getItem("paniers")!=null){
  		panier.onclick=()=> {	
  		let couleur=document.getElementById("choix_couleur").value;
  		let imageUrl=data.imageUrl;
+ 		let nom=data.name;
  		let votrePanier={
 
-    		nom:produit_selectionne,
+    		nom:nom,
 			couleur:couleur,
 			quantite:quantite,
 			prix_unitaire:data.price/100,
@@ -114,13 +114,12 @@ if (localStorage.getItem("paniers")!=null){
     console.log(paniers);
 // Continuer les achats ou non
 
-confirm("Voulez-vous continuer les achats?");
-if (confirm()){
-	document.location.href="index.html"
+if (confirm("Produit ajouté. \nContinuer les achats?\n\nOK: Continuer       Annuler: Voir mon panier")){
+	document.location.href="index.html";
 }
 else {
-	document.location.href="panier.html"
-};
+	document.location.href="panier.html";
+}
 	
 
 // fin confirm
@@ -140,4 +139,3 @@ vider_panier.onclick=()=> {
 });
 
 })
-

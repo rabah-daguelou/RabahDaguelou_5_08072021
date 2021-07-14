@@ -61,7 +61,7 @@
 	<nav class="container">
 		<ul>
 			<li> <a href="index.html"> <img class="logo" src="images/logo.png" width="100"></a></li>
-			<li> Mon panier <i class="fas fa-shopping-cart"></i></li>
+			<li> Mon panier <i class="fas fa-shopping-cart"></i><span id="total_article"></span></li>
 		</ul>
 
 	</nav>
@@ -70,9 +70,16 @@
 <!-- Fin header -->
 
 <!-- Début Main -->
-<main>
-	
+<main class="commande">
+	<h1> Confirmation de votre commande </h1>
+	<p> Bonjour <span id="nom"></span> </p>
+
+	<p> Votre commande d'un total de <span id="total_commande"> </span> est <span class="confirmee">confirmée.</span>  <br> Votre identifiant de commande est: <span id="identifiant"> </span> <br><br> Nous vous remercions de votre visite et de vos achats.</p>	
+
+
+	<button id="accueil"> Retour à l'accueil </button>
 </main>	
+
 <footer>
 	<a href=""> Contactez-nous</a>
 </footer>

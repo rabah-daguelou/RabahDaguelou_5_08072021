@@ -169,6 +169,7 @@ button {
 button:hover{
 	box-shadow: 2px 2px 5px #000;
 	transform: scale(1.05);
+	cursor: pointer;
 }
 
 /* Page panier */
@@ -193,6 +194,9 @@ button:hover{
 	width: 20%;
 	
 }
+.merci {
+	text-align: center;
+}
 .carte_produit_mini{
 	width: 200px;
 	height: 180px;
@@ -212,4 +216,71 @@ button:hover{
 	margin-top: 10px;
 	border-radius: 0 0 10px 10px;
 	line-height: 40px;
+}
+
+.recap {
+	background-color: #D09BFC;
+	text-align: center;
+}
+
+.resume {
+	padding: 10px 0;
+	background-color: #000;
+	color:#fff;
+	font-weight: 600;
+	font-size: 2rem;
+}
+#votre_panier, #total_a_payer {
+	
+}
+.formulaire {
+	width: 80%;
+	margin: 20px auto;
+}
+.formulaire label, .formulaire input {
+	display: block;
+	margin-left: 10%;
+}
+.formulaire input {
+	margin: 10px auto 20px;
+	transition: transform;
+}
+
+.formulaire input:focus{
+	background-color: #fff;
+	box-shadow: 2px 2px 5px #000;
+	transform: scale(1.1);
+}
+#confirmer_commande,#accueil {
+	margin: 20px auto;
+	background-color: #000;
+	color: #fff;
+}
+
+/* Validation du formulaire*/ 
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 1px solid green;
+} 
+
+/* Page de commande */
+
+.commande {
+	text-align: center;
+}
+.confirmee {
+	font-weight: 600;
+	font-size: 1.5em;
+	color:green;
+}
+
+#nom,#total_commande,#identifiant{
+	font-size: 1.5rem;
+	font-weight: 900;
+}
+#total_commande,#identifiant {
+	color: red;
 }

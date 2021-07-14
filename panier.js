@@ -42,9 +42,10 @@ document.getElementById("votre_panier").textContent=total+"  article(s)";
 		carte.appendChild(nombre_produit)
 		.classList.add("nombre_article");
 		nombre_produit.textContent=paniers[i].quantite;
+		
 		// Insérer le nom  du produit dans la carte
 		carte.appendChild(nomEtprix_produit).classList.add("nomEtprix_produit_mini");
-		nomEtprix_produit.appendChild(nom_produit).classList.add("nom_produit")
+		nomEtprix_produit.appendChild(nom_produit).classList.add("nom_produit");
 		nom_produit.textContent=paniers[i].nom;
 
 		// Insérer le prix du produit
@@ -58,26 +59,48 @@ document.getElementById("votre_panier").textContent=total+"  article(s)";
 
 		prix_a_payer=prix_a_payer+paniers[i].prix;
 
-};		
+}		
+// fin de création des éléments html
 
 document.getElementById("toal_a_payer")
 .textContent=prix_a_payer+ ' €';
 
-		
+// Récupérer les données du formulaire
 
 
+// Ecouter le clic
+document.querySelector('#confirmer_commande')
+.addEventListener("click",(f)=>{
+f.preventDefault();
 
+let nom=document.querySelector('#nom').value;
+let prenom=document.querySelector('#prenom').value;
+let adresse=document.querySelector('#adresse').value;
+let ville=document.querySelector('#ville').value;
+let code_postal=document.querySelector('#code_postal').value;
+let mail=document.querySelector('#mail').value;
+let tel=document.querySelector('#tel').value;
 
+console.log(nom);
+let commande={
+		nom:nom,
+		prenom:prenom,
+		adresse:adresse,
+		ville:ville,
+		code_postal:code_postal,
+		mail:mail,
+		tel:tel,
+	}
 
+console.log(commande);
 
+//local storage
+localStorage.setItem("commande",JSON.stringify(commande));
+})
 
+// Aller sur la page commande
 
-
-//vider le panier
-confirmer_commande.onclick=()=> {
-    localStorage.clear();
-    document.location.reload();
-
+confirmer_commande.onclick=()=>{
+	document.location.href="commande.html";
 }
-
 

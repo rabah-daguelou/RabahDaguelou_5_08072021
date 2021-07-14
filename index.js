@@ -17,7 +17,7 @@ fetch(api)
 	.then((res)=>res.json())
 	.catch((err)=>{
 		let erreur=document.getElementById("nos-produits")
-		.textContent="Erreur d'accès au serveur ! Le contenu de la page ne peut pas être affiché!"
+		.textContent="Erreur: Accès au serveur impossible ! Le contenu de la page ne peut pas être affiché!"
 	})
 	.then((data)=>{
 
@@ -59,12 +59,21 @@ fetch(api)
 		function changerPrix(price) {
 		return price/100
 		}
-*/
+*/// Clic sur Mon panier
+
 
 	});
 
+// Clic sur Mon panier
 
-	
+	mon_panier.onclick=()=> {
+	if (total>0){
+		document.location.href="panier.html"
+	}
+	else {
+		alert("Votre panier est vide !")
+	}
+}
 	
 	
 // Récupérations des produits individuellement
