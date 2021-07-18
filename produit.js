@@ -80,7 +80,7 @@ if (localStorage.getItem("paniers")!=null){
 	for (var i = 0; i<paniers.length; i++) {
 		total=total+paniers[i].quantite;
 	}
-	console.log(total);
+	
 	document.getElementById("total_article").innerText=total;
 	} 		
  		// Au clic sur ajouter au panier
@@ -96,6 +96,7 @@ if (localStorage.getItem("paniers")!=null){
 			prix_unitaire:data.price/100,
 			prix:prix_total,
 			url:imageUrl,
+			id_:data._id
 		   } 			
  		
    

@@ -90,33 +90,41 @@
 	<section class="formulaire">
 		<h2 class="merci"> Merci de remplir le formulaire ci-dessous pour passer votre commande </h2><br><br>
 		
-		<form method="post" action="commande.html" name="formulaire">
+		<form method="post" action="#" id="formulaire">
 			
 			<label for="nom"> 1. Nom: </label>
-			<input type="text" name="nom" id="nom" placeholder="Exemple: Dupont" required="required" >
-
+			<input type="text" name="nom" id="nom" placeholder="Exemple: Dupont" class="inputgras"> 
+			<p id="erreurNom"></p>
+			
 			<label for="prenom"> 2. Prénom: </label> 
-			<input type="text" name="prenom" id="prenom" placeholder="Exemple: Jean" required="required">
+			<input type="text" name="prenom" id="prenom" placeholder="Exemple: Jean" class="inputgras">
+			<p id="erreurPrenom"></p>
 			
 
 			<label for="adresse" > 3. Adresse de livraison: </label>
-			<input type="text" name="adresse" id="adresse" placeholder="Exemple: 04, rue de la Fontaine" required="required">
+			<input type="text" name="adresse" id="adresse" placeholder="Exemple: 04, rue de la Fontaine" class="inputgras"> 
+			<p id="erreurAdresse"></p>
+			
 			
 			<label for="ville"> 4. Ville: </label> 
-			<input type="text" name="ville" id="ville" placeholder="Exemple: Paris" required="required">
+			<input type="text" name="ville" id="ville" placeholder="Exemple: Paris" class="inputgras">
+			<p id="erreurVille"></p>
 
 			<label for="code_postal"> 5. Code postal: </label> 
-			<input type="number" name="code_postal" id="code_postal" placeholder="Exemple:75020" required="required">
-			
+			<input type="number" name="code_postal" id="code_postal" placeholder="Exemple:75020" class="inputgras">
+			<p id="erreurCodepostal"></p>
+		
 			<label for="mail"> 6. E-Mail: </label> 
-			<input type="mail" name="mail" id="mail" placeholder="Exemple: JeanDupont2000@gmail.com" required="required">
+			<input type="mail" name="mail" id="mail" placeholder="Exemple: JeanDupont2000@gmail.com" class="inputgras">
+			<p id="erreurMail"></p>
 
 			<label for="tel"> 7. N° Tél: </label> 
-			<input type="number" name="tel" id="tel" placeholder="Exemple: 0651524247" required="required" minlength="10" maxlength="10">
+			<input type="number" name="tel" id="tel" placeholder="Formats: 0999999999 Exemple: 0651524247"class="inputgras">
+			<p id="erreurTel" ></p>
 
+			<button id="confirmer_commande" type="submit" name="Confirmer votre commande " class="inputgras"> Valider </button>
 			
-			<button id="confirmer_commande"> Confirmer votre commande </button>
-
+			
 		</form>
 
 	</section>

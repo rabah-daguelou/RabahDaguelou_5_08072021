@@ -230,9 +230,7 @@ button:hover{
 	font-weight: 600;
 	font-size: 2rem;
 }
-#votre_panier, #total_a_payer {
-	
-}
+
 .formulaire {
 	width: 80%;
 	margin: 20px auto;
@@ -244,12 +242,14 @@ button:hover{
 .formulaire input {
 	margin: 10px auto 20px;
 	transition: transform;
+	outline: none;
 }
 
 .formulaire input:focus{
 	background-color: #fff;
 	box-shadow: 2px 2px 5px #000;
 	transform: scale(1.1);
+	font-weight: 600;
 }
 #confirmer_commande,#accueil {
 	margin: 20px auto;
@@ -257,14 +257,14 @@ button:hover{
 	color: #fff;
 }
 
-/* Validation du formulaire*/ 
+/* Validation du formulaire 
 input:invalid {
   border: 2px dashed red;
 }
 
 input:valid {
   border: 1px solid green;
-} 
+} */
 
 /* Page de commande */
 
@@ -277,10 +277,16 @@ input:valid {
 	color:green;
 }
 
-#nom,#total_commande,#identifiant{
+#total_commande,#identifiant,.inputgras{
 	font-size: 1.5rem;
 	font-weight: 900;
 }
 #total_commande,#identifiant {
 	color: red;
+}
+
+.message_erreur {
+	color: red;
+	margin: 5px auto;
+	text-align: center;
 }

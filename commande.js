@@ -2,13 +2,15 @@
 
 // Récupération du panier et du formulaire
 let paniers=JSON.parse(localStorage.getItem('paniers'));
-let commande=JSON.parse(localStorage.getItem('commande'));
+let contact=JSON.parse(localStorage.getItem('contact'));
 
 console.log(paniers);
-console.log(commande);
+
+console.log(contact);
 
 // Insérer le nombre d'articles dans le panier
 let total=0;
+
 for (var i = 0; i<paniers.length; i++) {
 		total=total+paniers[i].quantite;
 	}
@@ -21,11 +23,11 @@ var prix_a_payer=0;
 for (var i = 0; i<paniers.length; i++) {
 		prix_a_payer=prix_a_payer+paniers[i].prix;
 	}
-console.log('prix:'+ prix_a_payer);
+
 
 // Récupération du nom du client et l'afficher
 document.getElementById('nom')
-.textContent=commande.nom+'   '+ commande.prenom;
+.textContent=contact.firstName+'   '+ contact.lastName;
 
 // Afficher le prix total
 document.getElementById('total_commande')

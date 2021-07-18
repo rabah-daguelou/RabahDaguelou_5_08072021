@@ -1,12 +1,15 @@
-let total=0;
+
+// Si le local storage existe, récupérer le produits du panier sinon mettre le panier à 0
 if (localStorage.getItem("paniers")!=null){
 	paniers=JSON.parse(localStorage.getItem("paniers"));
-	
+	let total=0;
 	for (var i = 0; i<paniers.length; i++) {
 		total=total+paniers[i].quantite;
+		document.getElementById("total_article").innerText=total;
 	}
-	console.log(total);
-	document.getElementById("total_article").innerText=total;
+		
+	} else {
+		let total=0;
 	}
 
 
@@ -54,17 +57,11 @@ fetch(api)
 		prix_produit.textContent=data[i].price/100+",00 €"
 		}
 
-/* une fonction globale 
-		let prix=changerPrix(data.price);
-		function changerPrix(price) {
-		return price/100
-		}
-*/// Clic sur Mon panier
-
-
 	});
 
 // Clic sur Mon panier
+// S'il y a des produit aller sur page panier*
+// sinon afficher une alerte et rester sur la page d'accueil
 
 	mon_panier.onclick=()=> {
 	if (total>0){
@@ -76,6 +73,5 @@ fetch(api)
 }
 	
 	
-// Récupérations des produits individuellement
 
 		
