@@ -132,12 +132,10 @@ formulaire.addEventListener('submit',function (f){
         erreurPrenom.style.display="none";
     }
 
-    // Le champs adresse //
-
-	let adresse=document.querySelector("#adresse");
+// Le champs adresse //
+    let adresse=document.querySelector("#adresse");
     let erreurAdresse=document.getElementById('erreurAdresse');
-    
-    let regexadresse=/[0-9]+ ?[a-zA-Z/s]*/;
+    let regexadresse=/^[a-zA-Z-\s]+$/;
     
     if (adresse.value.trim()==""){
         
@@ -148,7 +146,7 @@ formulaire.addEventListener('submit',function (f){
 
     }else if (regexadresse.test(adresse.value)==false){
         
-        erreurAdresse.textContent="Cette adresse est incorrecte !";
+        erreurAdresse.textContent="Cette adresse est incorrect !";
         erreurAdresse.classList.add('message_erreur');
         adresse.style.border='1px dashed red';
         f.preventDefault();
@@ -157,6 +155,8 @@ formulaire.addEventListener('submit',function (f){
         adresse.style.border='1px dashed green';
         erreurAdresse.style.display="none";
     }
+    
+	
 // Le champs ville
 
 	let ville=document.querySelector("#ville");
@@ -256,6 +256,10 @@ let tel=document.querySelector("#tel");
         tel.style.border='1px dashed green';
         erreurTel.style.display="none";
         }
+
+
+// Fin écoute submit
+
 // Récupérer les données du formulaire
 
 let contact={
@@ -266,15 +270,21 @@ let contact={
         email:mail.value,
         };
 
-console.log(contact);
+
 //local storage
 
 localStorage.setItem("contact",JSON.stringify(contact));
+});
+let contact=JSON.parse(localStorage.getItem('contact'));
 
+console.log(contact);
 
 // Envoi des données au serveur avec fetch POST
 
 // 1- Regrouper le panier et le formulaire dans un objet ORDER
+
+
+
 let errayStringsProducts=[];
 for (var i = 0; i < paniers.length; i++) {
     id=paniers[i].id_;
@@ -284,51 +294,64 @@ for (var i = 0; i < paniers.length; i++) {
 
 console.log(errayStringsProducts);
 
-/*const order={
+let order={
     
     contact:contact,
     products:errayStringsProducts,
 };
-
+/*
 console.log(order);
 localStorage.setItem("order",JSON.stringify(order));
 alert(order);
-*/
+
 let order = {
         "contact": {
             "firstName": nom.value,
-            "lastName": prenom.value,
-            "address":adresse.value,
+            "lastName": "prenom.value",
+            "address":"adresse.value",
             "city":"ville.value",
             "email":"mail.value",
         },
         
-        "products":errayStringsProducts,
-        /*"products":["5be1ed3f1c9d44000030b061","5be1ef211c9d44000030b062"]*/
-    };
+        
+        "products":["5be1ed3f1c9d44000030b061","5be1ef211c9d44000030b062"]
+    };*/
 
 //2- Envoi de la requête
-const promise=fetch("http://localhost:3000/api/cameras/order",{
-        method:"POST",
-        body:JSON.stringify(order),
-        headers:{"Content-Type":"application/json"}, 
-                
-        });
+let promise=fetch("http://localhost:3000/api/teddies/order",{
+    method:"POST",
+    body:JSON.stringify(order),
+    headers:{"Content-Type":"application/json",},
+   
 
-promise.then(async(response)=>{
+   });
+
+    promise.then(async(response)=>{
+        try{
+            const retourServeur=await response.json();
+            console.log("OrderId: ",retourServeur.orderId);
+
+        }
+        catch(e){
+            console.log(e);
+        }
+    });
+        
     
-promise.then((res)=>res.json())
-console.log("Réponse" + (response));
-alert(response);
-promise.catch((err)=>{
+
+  /*  .catch((err)=>{
         let erreur=document.getElementById("nos-produits")
-        .textContent="Erreur: Accès au serveur impossible ! Le contenu de la page ne peut pas être affiché!"
-    })
-});alert("2");
+        .textContent="Erreur: Accès au serveur impossible ! Le contenu de la page ne peut pas être affiché!"*/
+  
+
+
+/*
+    
      
 });
+alert("2");
 
-
+*/
 
 
 // Aller sur la page commande
