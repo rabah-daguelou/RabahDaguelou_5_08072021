@@ -1,3 +1,4 @@
+  
 var prix_a_payer=0;
 
 // Récupération des achats
@@ -7,8 +8,8 @@ let paniers=JSON.parse(localStorage.getItem('paniers'));
 console.log(paniers);
 let total=0;
 for (var i = 0; i<paniers.length; i++) {
-		total=total+paniers[i].quantite;
-	}
+        total=total+paniers[i].quantite;
+    }
 
 document.getElementById("total_article").innerText=total;
 
@@ -17,49 +18,49 @@ document.getElementById("votre_panier").textContent=total+"  article(s)";
 
 // Afficher les articles du panier en détail
 
-		//Création des éléments html de la carte produit 
-	for (let i in paniers) {	
-		let lien=document.createElement("a");
-		let carte=document.createElement("div");
-		let image_produit=document.createElement("img");
-		let nombre_produit=document.createElement("span");
-		let nomEtprix_produit=document.createElement("div");
-		let nom_produit=document.createElement("p");
-		let prix_produit=document.createElement("p");
-		let prix_total=document.createElement("p");
-				
-		// Récupérer les articles dans le panier
+        //Création des éléments html de la carte produit 
+    for (let i in paniers) {    
+        let lien=document.createElement("a");
+        let carte=document.createElement("div");
+        let image_produit=document.createElement("img");
+        let nombre_produit=document.createElement("span");
+        let nomEtprix_produit=document.createElement("div");
+        let nom_produit=document.createElement("p");
+        let prix_produit=document.createElement("p");
+        let prix_total=document.createElement("p");
+                
+        // Récupérer les articles dans le panier
 
-		let carte_produit=document.getElementById('nos-produits');
-		carte_produit.appendChild(lien).href="#";
+        let carte_produit=document.getElementById('nos-produits');
+        carte_produit.appendChild(lien).href="#";
 
-		// insérer la carte dans le lien
-		lien.appendChild(carte).classList.add("carte_produit_mini");
-		
-		// Insérer l'image dans la carte
-		carte.appendChild(image_produit).classList.add("image_produit_mini");
-		image_produit.src=paniers[i].url;
-		carte.appendChild(nombre_produit)
-		.classList.add("nombre_article");
-		nombre_produit.textContent=paniers[i].quantite;
-		
-		// Insérer le nom  du produit dans la carte
-		carte.appendChild(nomEtprix_produit).classList.add("nomEtprix_produit_mini");
-		nomEtprix_produit.appendChild(nom_produit).classList.add("nom_produit");
-		nom_produit.textContent=paniers[i].nom;
+        // insérer la carte dans le lien
+        lien.appendChild(carte).classList.add("carte_produit_mini");
+        
+        // Insérer l'image dans la carte
+        carte.appendChild(image_produit).classList.add("image_produit_mini");
+        image_produit.src=paniers[i].url;
+        carte.appendChild(nombre_produit)
+        .classList.add("nombre_article");
+        nombre_produit.textContent=paniers[i].quantite;
+        
+        // Insérer le nom  du produit dans la carte
+        carte.appendChild(nomEtprix_produit).classList.add("nomEtprix_produit_mini");
+        nomEtprix_produit.appendChild(nom_produit).classList.add("nom_produit");
+        nom_produit.textContent=paniers[i].nom;
 
-		// Insérer le prix du produit
-		nomEtprix_produit.appendChild(prix_produit).classList.add("prix_produit")
-		prix_produit.textContent='Prix/u: '+ paniers[i].prix_unitaire+'€';
+        // Insérer le prix du produit
+        nomEtprix_produit.appendChild(prix_produit).classList.add("prix_produit")
+        prix_produit.textContent='Prix/u: '+ paniers[i].prix_unitaire+'€';
 
-		// Insérer le prix total du produit
-		carte.appendChild(prix_total)
-		.textContent='Prix total: '+ paniers[i].prix+'€'
-		prix_total.classList.add("prix_total");
+        // Insérer le prix total du produit
+        carte.appendChild(prix_total)
+        .textContent='Prix total: '+ paniers[i].prix+'€'
+        prix_total.classList.add("prix_total");
 
-		prix_a_payer=prix_a_payer+paniers[i].prix;
+        prix_a_payer=prix_a_payer+paniers[i].prix;
 
-}		
+}       
 // fin de création des éléments html
 
 document.getElementById("toal_a_payer")
@@ -79,14 +80,14 @@ document.getElementById("toal_a_payer")
 let formulaire=document.getElementById('formulaire');
 
 formulaire.addEventListener('submit',function (f){
-	
-	// variables nom
-	let nom=document.querySelector("#nom");
+    
+    // variables nom
+    let nom=document.querySelector("#nom");
     let erreurNom=document.getElementById('erreurNom');
 
-	let regex1=/^[a-zA-Z-\s]+$/; // nom/ prenom // Autoriser les lettre maj et min, le tiret et l'espace + répéter plusieurs fois
+    let regex1=/^[a-zA-Z-\s]+$/; // nom/ prenom // Autoriser les lettre maj et min, le tiret et l'espace + répéter plusieurs fois
 
-	// Le champs nom //
+    // Le champs nom //
     
     // trim retire les espaces initiaux et finaux
     if (nom.value.trim()==""){
@@ -102,15 +103,15 @@ formulaire.addEventListener('submit',function (f){
         f.preventDefault();
     }
     else {
-    	nom.style.border='1px dashed green';
-    	nom.style.background='#CDF4AB';
+        nom.style.border='1px dashed green';
+        nom.style.background='#CDF4AB';
         erreurNom.style.display="none";
         
     }
 
 // Le champs prénom //
 
-	let prenom=document.querySelector("#prenom");
+    let prenom=document.querySelector("#prenom");
     let erreurPrenom=document.getElementById('erreurPrenom');
     
     if (prenom.value.trim()==""){
@@ -156,10 +157,10 @@ formulaire.addEventListener('submit',function (f){
         erreurAdresse.style.display="none";
     }
     
-	
+    
 // Le champs ville
 
-	let ville=document.querySelector("#ville");
+    let ville=document.querySelector("#ville");
     let erreurVille=document.getElementById('erreurVille');
     let regexville=/^[a-zA-Z-\s]+$/;
     
@@ -183,8 +184,8 @@ formulaire.addEventListener('submit',function (f){
     }
     
 // Le champs code postal
-	
-	let codepostal=document.querySelector("#code_postal");
+    
+    let codepostal=document.querySelector("#code_postal");
     let erreurCodepostal=document.getElementById('erreurCodepostal');
     let regexcodepostal =/^(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}$/;
     
@@ -209,7 +210,7 @@ formulaire.addEventListener('submit',function (f){
 
 // Le champs Email
 
-	let mail=document.querySelector("#mail");
+    let mail=document.querySelector("#mail");
     let erreurMail=document.getElementById('erreurMail');
     let regexmail=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
@@ -303,7 +304,6 @@ let order={
 console.log(order);
 localStorage.setItem("order",JSON.stringify(order));
 alert(order);
-
 let order = {
         "contact": {
             "firstName": nom.value,
@@ -331,32 +331,26 @@ let promise=fetch("http://localhost:3000/api/teddies/order",{
             const retourServeur=await response.json();
             console.log("OrderId: ",retourServeur.orderId);
 
+            let commandeInfos={
+                identifiant:retourServeur.orderId,
+                prix_a_payer:prix_a_payer,
+                nomContact:retourServeur.contact.firstName,
+                prenomContact:retourServeur.contact.lastName
+           } 
+            
+            console.log(retourServeur);
+            console.log("OrderId: ",retourServeur.orderId);
+            console.log("Prix à payer:  ",prix_a_payer);
+            console.log(commandeInfos);
+
+         localStorage.setItem("commandeInfos",JSON.stringify(commandeInfos));   
+
+         console.log(commandeInfos);
+            document.location.href="commande.html";
         }
+
         catch(e){
             console.log(e);
         }
     });
         
-    
-
-  /*  .catch((err)=>{
-        let erreur=document.getElementById("nos-produits")
-        .textContent="Erreur: Accès au serveur impossible ! Le contenu de la page ne peut pas être affiché!"*/
-  
-
-
-/*
-    
-     
-});
-alert("2");
-
-*/
-
-
-// Aller sur la page commande
-
-/*confirmer_commande.onclick=()=>{
-	document.location.href="commande.html";
-}*/
-
