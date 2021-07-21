@@ -21,14 +21,8 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<!-- Favicon 
-<link rel="icon" href="favicon.ico">-->
-
 <!-- Fontawesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-
-<!-- balise canonique 
-<link rel="canonical" href="https://daguelourabahprojet4.000webhostapp.com/index.html">-->
 
 <!-- Meta Robots -->
 <meta name= "robots" content= "index,follow">
@@ -38,17 +32,14 @@
 <meta property="og:title" content="Orinoco, un site de e-commerce">
 <meta property="og:description" content="Orinoco, un site de e-commerce, Projet 5 Openclassrooms">
 <meta property="og:type" content="website">
-<!--
-<meta property="og:url" content="https://rabah-daguelou.github.io/RabahDaguelou_5_05072021/">
-<meta property="og:image" content="https://rabah-daguelou.github.io/RabahDaguelou_5_05072021/img/logo.png">
--->
+
 <!-- Twitter cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Orinoco, un site de e-commerce">
 <meta name="twitter:description" content="Orinoco, un site de e-commerce, Projet 5 Openclassrooms">
 
 <!-- JavaScript -->
-<script type="text/javascript" src="panier.js" defer></script>
+<script src="panier.js" defer></script>
 
 
 </head>
@@ -60,7 +51,7 @@
 
 	<nav class="container">
 		<ul>
-			<li> <a href="index.html"> <img class="logo" src="images/logo.png" width="100"></a></li>
+			<li> <a href="index.html"> <img class="logo" src="images/logo.png" width="100" alt="Logo Orinoco"></a></li>
 			<li> Mon panier <i class="fas fa-shopping-cart"></i>
 				<span id="total_article"></span></li>
 		</ul>
@@ -88,38 +79,38 @@
 	<!-- Formulaire -->
 
 	<section class="formulaire">
-		<h2 class="merci"> Merci de remplir le formulaire ci-dessous pour passer votre commande </h2><br><br>
+		<h2 id="merci"> Merci de saisir correctement le formulaire ci-dessous pour passer votre commande.</h2><br><br>
 		
 		<form method="post" action="#" id="formulaire">
 			
-			<label for="nom"> 1. Nom: </label>
+			<label for="nom"> 1. Nom: <span>*</span></label>
 			<input type="text" name="nom" id="nom" placeholder="Exemple: Dupont" class="inputgras"> 
 			<p id="erreurNom"></p>
 			
-			<label for="prenom"> 2. Prénom: </label> 
+			<label for="prenom"> 2. Prénom: <span>*</span> </label> 
 			<input type="text" name="prenom" id="prenom" placeholder="Exemple: Jean" class="inputgras">
 			<p id="erreurPrenom"></p>
 			
 
-			<label for="adresse" > 3. Adresse de livraison: </label>
+			<label for="adresse" > 3. Adresse de livraison: <span>*</span></label>
 			<input type="text" name="adresse" id="adresse" placeholder="Exemple: 04, rue de la Fontaine" class="inputgras"> 
 			<p id="erreurAdresse"></p>
 			
 			
-			<label for="ville"> 4. Ville: </label> 
+			<label for="ville"> 4. Ville:<span>*</span> </label> 
 			<input type="text" name="ville" id="ville" placeholder="Exemple: Paris" class="inputgras">
 			<p id="erreurVille"></p>
 
-			<label for="code_postal"> 5. Code postal: </label> 
+			<label for="code_postal"> 5. Code postal: <span>*</span></label> 
 			<input type="number" name="code_postal" id="code_postal" placeholder="Exemple:75020" class="inputgras">
 			<p id="erreurCodepostal"></p>
 		
-			<label for="mail"> 6. E-Mail: </label> 
-			<input type="mail" name="mail" id="mail" placeholder="Exemple: JeanDupont2000@gmail.com" class="inputgras">
+			<label for="mail"> 6. E-Mail:<span>*</span> </label> 
+			<input type="email" name="mail" id="mail" placeholder="Exemple: JeanDupont2000@gmail.com" class="inputgras">
 			<p id="erreurMail"></p>
 
-			<label for="tel"> 7. N° Tél: </label> 
-			<input type="number" name="tel" id="tel" placeholder="Formats: 0999999999 Exemple: 0651524247"class="inputgras">
+			<label for="tel"> 7. N° Tél: <span>*</span></label> 
+			<input type="number" name="tel" id="tel" placeholder="Format: 0999999999 Exemple: 0651524247" class="inputgras">
 			<p id="erreurTel" ></p>
 
 			<button id="confirmer_commande" type="submit" name="Confirmer votre commande " class="inputgras"> Valider </button>
@@ -131,7 +122,53 @@
 
 </main>	
 <footer>
-	<a href=""> Contactez-nous</a>
+
+<div class="cartes_footer">
+	<div class="carte_footer"> 
+		<p><i class="fab fa-cc-visa"></i></p>
+		<p> Payement sécurisé</p>
+	</div>
+
+	<div class="carte_footer"> 
+		<p><i class="fas fa-shuttle-van"></i></p>
+		<p> Livraison dans <br>toute la France</p>
+	</div>
+
+	<div class="carte_footer"> 
+		<p><i class="fas fa-euro-sign"></i></p>
+		<p> Satisfaits ou remboursés !</p>
+	</div>
+
+	<div class="carte_footer"> 
+		<p><i class="fas fa-address-card"></i></p>
+		<p> Programme de fidélité !</p>
+	</div>
+
+	<div class="carte_footer"> 
+		<p><i class="fas fa-blender-phone"></i></p>
+		<p> Service clients <br> 0800 120 120 </p>
+	</div>
+</div>
+<div class="newsletter">
+	<p class="newsletter"> Vous inscrire à la newsletter: 
+	<input class="e-meil" type="email" placeholder="Votre e-mail">
+	<button id="newsletter">Je m'inscris</button>
+
+	</p>
+</div>
+
+
+<h2> Partager </h2>
+<div class="reseaux">
+	<p><i class="fab fa-facebook-f"></i></p>
+	<p><i class="fab fa-twitter"></i></p>
+	<p><i class="fab fa-linkedin-in"></i></p>
+	<p><i class="fab fa-instagram-square"></i></p>
+
+</div>
+<hr>
+
+<p class="contactez-nous"> <a href="mailto:orinoco@orinoco.com"><i class="fas fa-mail-bulk"></i> Contactez-nous </a></p>	
 </footer>
 <!-- Fin Footer -->
 
