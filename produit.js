@@ -1,4 +1,22 @@
-
+// Si le local storage existe, récupérer le produits du panier sinon mettre le panier à 0
+let paniers=[];
+if (localStorage.getItem("paniers")!=null){
+	paniers=JSON.parse(localStorage.getItem("paniers"));
+	let total=0;
+	for (var i = 0; i<paniers.length; i++) {
+		total=total+paniers[i].quantite;
+		document.getElementById("total_article").innerText=total;
+		mon_panier.onclick=()=> {
+		document.location.href="panier.html"
+	}
+}
+// Si local storage est vide + clic sur le panier		
+} else {
+	let total=0;
+	mon_panier.onclick=()=> {
+	alert("Votre panier est vide !")
+	}
+}
 
 // Récupération de l'API via l'id
 const lienId=window.location.search;
@@ -10,17 +28,16 @@ let api2=api+"/"+idLien
 // Récupération des informations du produit sélectionné
 fetch(api2)		
 	.then((res)=>res.json())
-	
 	.then((data)=>{
 
 		//Création des éléments html de la carte produit 
 		
-		const carte=document.createElement("div");
-		const image_produit=document.createElement("img");
+		const carte            =document.createElement("div");
+		const image_produit    =document.createElement("img");
 		const nomEtprix_produit=document.createElement("div");
-		const nom_produit=document.createElement("p");
-		const prix_produit=document.createElement("p");
-		const lien=document.createElement("a");
+		const nom_produit      =document.createElement("p");
+		const prix_produit     =document.createElement("p");
+		const lien             =document.createElement("a");
 				
 		// Insérer les éléments en HTML
 		document.getElementById("produit_selectionne")
@@ -30,13 +47,13 @@ fetch(api2)
 		let carte_produit=document.getElementById('nos-produits');
 		carte_produit.appendChild(lien).href="#";
 		lien.appendChild(carte).classList.add("carte_produit");
-
+		
 		// Insérer l'image dans la carte
-		carte.appendChild(image_produit).classList.add("image_produit");
+		carte.appendChild(image_produit).classList.add("image_produit2");
 		image_produit.src=data.imageUrl;
 		
 		// Insérer le nom  et le prix
-		carte.appendChild(nomEtprix_produit).classList.add("nomEtprix_produit")
+		carte.appendChild(nomEtprix_produit).classList.add("nomEtprix_produit2")
 		nomEtprix_produit.appendChild(nom_produit).classList.add("nom_produit")
 		nom_produit.textContent=data.name;
 		nomEtprix_produit.appendChild(prix_produit).classList.add("prix_produit")
@@ -49,49 +66,36 @@ fetch(api2)
 			choix_couleur.appendChild(choix).textContent=data.colors[couleur];
 		}
 		
-		
-
 		// Insérer la quantité choisie
-		const quantite_choisie=document.getElementById("quantite_commandee");
+		let quantite_choisie=document.getElementById("quantite_commandee");
 		quantite_commandee.addEventListener("input", function(){
 			let quant=document.getElementById('quantite_commandee').value;
 			let quantite=parseInt(quant);
-					
-			document.getElementById('quant_com').innerText=quantite;
-			document.getElementById('total_article').innerText=quantite;
-			
+							
+			if(quantite<0){
+			alert('Merci de saisir une quantité supérieure à 0 !');
+			quantite_choisie.value=0;
+			}else{
+
+				document.getElementById('quant_com').innerText=quantite;
+
 			// Insérer le prix total des produits choisis	
 			prix_total=data.price/100*quantite;
 			document.getElementById('prix_total').innerText=prix_total+" €";
 			
-
-// Local storage // Tableau des produits choisis
-
-// Si le local existe déjà // mettre à jour leta   e panier	
-let paniers=[];
-let total=0;
-if (localStorage.getItem("paniers")!=null){
-	paniers=JSON.parse(localStorage.getItem("paniers"));
-	
-	for (var i = 0; i<paniers.length; i++) {
-		total=total+paniers[i].quantite;
-	}
-	
-	document.getElementById("total_article").innerText=total;
-	} 	
-
-
-
-
-	
- 		// Au clic sur ajouter au panier
+	// Au clic sur ajouter au panier
+ 		
  		panier.onclick=()=> {
-
- 		let couleur=document.getElementById("choix_couleur").value;
+ 			document.getElementById('total_article').innerText;
+ 			let total=document.getElementById('total_article').textContent;
+ 			total    =parseInt(total)+quantite;
+ 			document.getElementById('total_article').innerHTML=total;
+ 			
+ 		let couleur =document.getElementById("choix_couleur").value;
  		let imageUrl=data.imageUrl;
- 		let nom=data.name;
+ 		let nom     =data.name;
+ 		
  		let votrePanier={
-
     		nom:nom,
 			couleur:couleur,
 			quantite:quantite,
@@ -99,18 +103,17 @@ if (localStorage.getItem("paniers")!=null){
 			prix:prix_total,
 			url:imageUrl,
 			id_:data._id
-		   } 			
+		   } 	
+
 paniers.push(votrePanier);
 localStorage.setItem("paniers",JSON.stringify(paniers));
 
-// Continuer les achats/ Retour à la page d'accueil
+// Continuer les achats: Retour à la page d'accueil
 // Non: Aller à la page panier
 
-if (confirm("Produit ajouté. \nContinuer les achats?\n\nOK: Continuer       Annuler: Voir mon panier")){
-	
+if (confirm(quantite+ "  produit(s) ajouté(s) au panier. \nContinuer les achats?\n\nOK: Continuer       Annuler: Voir mon panier")){
 	document.location.href="index.html";
-}
-else {
+}else{
 	document.location.href="panier.html";
 }
 
@@ -122,6 +125,6 @@ vider_panier.onclick=()=> {
     localStorage.clear();
     document.location.reload();
 }
-
+};
 });
 });

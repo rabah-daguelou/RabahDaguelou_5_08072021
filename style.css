@@ -65,48 +65,65 @@ img{
 }
 
 /* Les cartes */
-.carte_produit{
+.carte_produit,.carte_produit2{
 	width: 300px;
 	height: 280px;
 	background-color: #fff;
 	border-radius:10px;
-	margin-top: 40px;
+	margin: 70px 20px;
 	box-shadow: 2px 2px 5px #C890F7;
 	transition: transform .5s;
 	text-align: center;
 }
-.carte_produit:hover {
+.carte_produit:hover,.carte_produit2:hover {
 	cursor: pointer;
 	transform: scale(1.1);
 	box-shadow: 2px 2px 5px #000;
 
 }
-.image_produit {
+
+
+.image_produit,.image_produit2 {
 	width: 100%;
 	height: 240px;
 	background-color: white;
+	border-radius: 0 0 10px 10px;
+}
+.image_produit2 {
 	border-radius: 10px 10px 0 0;
 }
 .image_produit_mini {
 	width: 60%;
-	height: 50%;
 	border-radius: 10px;
 }
-.nomEtprix_produit,.nomEtprix_produit_mini {
+.nomEtprix_produit,.nomEtprix_produit2,.nomEtprix_produit_mini {
 	width: 100%;
 	height:40px;
 	display: flex;
 	justify-content: space-between;
 	background-color: #000;
 	color: #fff;
-	border-radius: 0 0 10px 10px;
+	border-radius: 10px 10px 0px 0px;
 	padding: 0 6px;
 	line-height: 40px;
 	font-weight: 600;
 }
+.nomEtprix_produit2 {
+	border-radius: 0px 0px 10px 10px ;
+}
+
+
 .nomEtprix_produit_mini {
 	border-radius: 0;
 	background-color: grey;
+	margin-top: 10px;
+}
+
+.description {
+	margin-top: 10px;
+	color: #000;
+	border-radius: 0 0 10px 10px;
+
 }
 /* page produit */
 
@@ -125,7 +142,7 @@ img{
 	height: 280px;
 	background-color: #fff;
 	border-radius:10px;
-	margin-top: 40px;
+	margin-top: 70px;
 	box-shadow: 2px 2px 5px #C890F7;
 	text-align: center;
 	display: flex;
@@ -208,6 +225,7 @@ button:hover{
 	transition: transform .5s;
 	text-align: left;
 	margin-bottom: 20px;
+	position: relative;
 }
 .prix_total {
 	text-align: center;
@@ -260,16 +278,37 @@ button:hover{
 
 label span {
 	color: red;
+	
 }
-
-/* Validation du formulaire 
-input:invalid {
-  border: 2px dashed red;
+.nombre_article {
+	position: absolute;
+	top: 10px;
+	left: 80px;
 }
-
-input:valid {
-  border: 1px solid green;
-} */
+.btn_supprimer {
+	width: 80px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	background: red;
+	color: #fff;
+	position: absolute;
+	top:55px;
+	right: 0px;
+	border-radius: 5px;
+}
+.btn_ajouter {
+	width: 80px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	background: green;
+	color: #fff;
+	position: absolute;
+	top:10px;
+	right: 0px;
+	border-radius: 5px;
+}
 
 /* Page de commande */
 
@@ -381,24 +420,12 @@ footer i:hover{
 @media screen and (max-width: 768px) {
 
 /* header */
-header,nav ul {
-	width: 100%;
+#mon_panier {
+	width: 150px;
 }
-nav ul li {
-	width: 45%;
+header nav ul li img{
+	margin-left: -30px;
 }
-nav ul li a img {
-	width:60%;
-} 
-nav ul li #mon_panier{
-	width:120%;
-	height: 40px;
-	font-size: 1rem;
-} 
-/*
-.carte_produit{
-	width: 250px;
-}*/
 
 .newsletter {
 	width: 100%;

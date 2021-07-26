@@ -1,36 +1,42 @@
-  
+let paniers=JSON.parse(localStorage.getItem('paniers'));
 let prix_a_payer=0;
 
-// Récupération des achats du panier
-
-let paniers=JSON.parse(localStorage.getItem('paniers'));
-console.log(paniers);
-let total=0;
-for (var i = 0; i<paniers.length; i++) {
-        total=total+paniers[i].quantite;
-    }
-
+// Fonction globale des mises à jour: quantité totale/prix total
+let miseAjour=function(){
+    
+    // Récupération des achats du panier
+    let paniers=JSON.parse(localStorage.getItem('paniers'));
+    console.log(paniers);
+    let total=0;
+    for (var i = 0; i<paniers.length; i++) {
+            total=total+paniers[i].quantite;
+        }
 document.getElementById("total_article").innerText=total;
-
 // Afficher le nombre d'article
 document.getElementById("votre_panier").textContent=total+"  article(s)";
+};
+// Fin fonction
 
-// Afficher les articles du panier en détail
+miseAjour();
 
 //Création des éléments html de la carte produit 
-for (let i in paniers) {    
-    let lien=document.createElement("a");
-    let carte=document.createElement("div");
-    let image_produit=document.createElement("img");
-    let nombre_produit=document.createElement("span");
-    let nomEtprix_produit=document.createElement("div");
-    let nom_produit=document.createElement("p");
-    let prix_produit=document.createElement("p");
-    let prix_total=document.createElement("p");
-                
-    // Récupérer les articles dans le panier
+paniers=JSON.parse(localStorage.getItem('paniers'));
+for (let i in paniers) {  
 
-    let carte_produit=document.getElementById('nos-produits');
+    let lien                =document.createElement("a");
+    let carte               =document.createElement("div");
+    let image_produit       =document.createElement("img");
+    let nombre_produit      =document.createElement("span");
+    let nomEtprix_produit   =document.createElement("div");
+    let nom_produit         =document.createElement("p");
+    let prix_produit        =document.createElement("p");
+    let prix_total          =document.createElement("p");
+    let supprimer           =document.createElement("bouton");
+    let ajouter             =document.createElement("bouton");         
+
+// Récupérer les articles dans le panier
+
+    let carte_produit       =document.getElementById('nos-produits');
     carte_produit.appendChild(lien).href="#";
 
     // insérer la carte dans le lien
@@ -41,8 +47,9 @@ for (let i in paniers) {
     image_produit.src=paniers[i].url;
     carte.appendChild(nombre_produit)
     .classList.add("nombre_article");
+    nombre_produit.classList.add("nombre_produit");
     nombre_produit.textContent=paniers[i].quantite;
-        
+    
     // Insérer le nom  du produit dans la carte
     carte.appendChild(nomEtprix_produit).classList.add("nomEtprix_produit_mini");
     nomEtprix_produit.appendChild(nom_produit).classList.add("nom_produit");
@@ -50,34 +57,99 @@ for (let i in paniers) {
 
     // Insérer le prix du produit
     nomEtprix_produit.appendChild(prix_produit).classList.add("prix_produit")
-    prix_produit.textContent='Prix/u: '+ paniers[i].prix_unitaire+'€';
+    prix_produit.textContent='Prix/u: '+ paniers[i].prix_unitaire+' €';
 
     // Insérer le prix total du produit
     carte.appendChild(prix_total)
-    .textContent='Prix total: '+ paniers[i].prix+'€'
+    .textContent='Prix total: '+ paniers[i].prix+' €'
     prix_total.classList.add("prix_total");
+    
     prix_a_payer=prix_a_payer+paniers[i].prix;
+   
 
-}       
+    document.getElementById("toal_a_payer")
+    .textContent='Total à payer : '+ prix_a_payer+ ' €';
 
-document.getElementById("toal_a_payer")
-.textContent=prix_a_payer+ ' €';
-// fin de création des éléments html
+// insérer le bouton supprimer
+    
+    carte.appendChild(supprimer);
+    supprimer.classList.add("btn_supprimer");
+    supprimer.innerText="Supprimer -";
+    
+    // début écouter le clic sur Supprimer
+        
+        supprimer.addEventListener("click",function(){
+    // supprimer un produit de la quantité
+        paniers[i].quantite=paniers[i].quantite-1;
+    // Soustraire le prix total du produit
+        paniers[i].prix=paniers[i].prix-paniers[i].prix_unitaire;
+    // Soustraire le prix à payer
+        prix_a_payer=prix_a_payer-paniers[i].prix_unitaire;
+    // mettre à jour la quantité du produit
+        nombre_produit.textContent=paniers[i].quantite;
+    // Mettre à jour le prix total du produit
+        prix_total.textContent='Prix total: '+paniers[i].prix +',00 €';
+    // Mettre à jour le prix à payer du panier
+        toal_a_payer.textContent= 'Total à payer: '+prix_a_payer+ ',00 €';
+    
+    // Tester la quantité restante du produit                
+        let reste=paniers[i].quantite;
+        let aSupprimer=paniers[i];
+            if (reste==0) {
+                carte.style.display="none";
+            };// Fin if 
+    // Mise à jour du localStorage        
+        localStorage.setItem("paniers",JSON.stringify(paniers));
+        miseAjour(miseAjour);
+
+    // Tester le prix à payer
+        if (prix_a_payer==0) {
+            alert("Vous avez vidé votre panier!");
+            localStorage.clear();
+            document.location.href="index.html";
+        }
+        });
+//fin ecoute suprimer
+
+// insérer le bouton Ajouter
+    
+    carte.appendChild(ajouter);
+    ajouter.classList.add("btn_ajouter");
+    ajouter.innerText="Ajouter +";
+    
+// début écouter le clic sur Ajouter
+    ajouter.addEventListener("click",function(){
+        // Ajouter un produit de la quantité
+        paniers[i].quantite=paniers[i].quantite+1;
+        // Additionner le prix total du produit
+        paniers[i].prix=paniers[i].prix+paniers[i].prix_unitaire;
+        // Soustraire le prix à payer
+        prix_a_payer=prix_a_payer+paniers[i].prix_unitaire;
+        // mettre à jour la quantité du produit
+        nombre_produit.textContent=paniers[i].quantite;
+        // Mettre à jour le prix total du produit
+        prix_total.textContent='Prix total: '+paniers[i].prix +' €';
+        // Mettre à jour le prix à payer du panier
+        toal_a_payer.textContent= 'Total à payer: '+prix_a_payer+ ' €';
+        // Mise à jour du localStorage et les valeurs fonction           
+        localStorage.setItem("paniers",JSON.stringify(paniers));
+        miseAjour(miseAjour);
+    });
+//fin ecoute Ajouter
+    
+};  // fin parcourir paniers// création des éléments html
 
 // Formatage des informations du formulaire
-    
-// -- Début d'écoute du bouton d'envoi submit ----------//
-
 let formulaire=document.getElementById('formulaire');
 
+// -- Début d'écoute du bouton d'envoi submit ----------//
 formulaire.addEventListener('submit',function (f){
-    
-    // variables nom
-    let nom=document.querySelector("#nom");
-    let erreurNom=document.getElementById('erreurNom');
-    let regex1=/^[a-zA-Z-\s]+$/; // nom/ prenom // Autoriser les lettre maj et min, le tiret et l'espace + répéter plusieurs fois
 
-// 1- Le champs nom //
+// 1- Le champs nom //    
+    // variables nom
+    let nom      =document.querySelector("#nom");
+    let erreurNom=document.getElementById('erreurNom');
+    let regex1   =/^[a-zA-Z-\s]+$/; // nom/ prenom // Autoriser les lettre maj et min, le tiret et l'espace + répéter plusieurs fois
     
     // Si le champs nom est vide // trim retire les espaces initiaux et finaux
     if (nom.value.trim()==""){
@@ -99,12 +171,11 @@ formulaire.addEventListener('submit',function (f){
         nom.style.border='1px dashed green';
         nom.style.background='#CDF4AB';
         erreurNom.style.display="none";
-        
     }
 
 // 2- Le champs prénom //
 
-    let prenom=document.querySelector("#prenom");
+    let prenom      =document.querySelector("#prenom");
     let erreurPrenom=document.getElementById('erreurPrenom');
     
     if (prenom.value.trim()==""){
@@ -122,14 +193,14 @@ formulaire.addEventListener('submit',function (f){
         f.preventDefault();
     }
     else {
-        prenom.style.border='1px dashed green';
+        prenom.style.border       ='1px dashed green';
         erreurPrenom.style.display="none";
     }
 
 // 3- Le champs adresse //
-    let adresse=document.querySelector("#adresse");
+    let adresse      =document.querySelector("#adresse");
     let erreurAdresse=document.getElementById('erreurAdresse');
-    let regexadresse=/^[a-zA-Z-\s]+$/;
+    let regexadresse =/^[a-zA-Z0-9\s,.'-]{3,}$/;
     
     if (adresse.value.trim()==""){
         
@@ -152,9 +223,9 @@ formulaire.addEventListener('submit',function (f){
     
 // 4- Le champs ville
 
-    let ville=document.querySelector("#ville");
+    let ville      =document.querySelector("#ville");
     let erreurVille=document.getElementById('erreurVille');
-    let regexville=/^[a-zA-Z-\s]+$/;
+    let regexville =/^[a-zA-Z-\s]+$/;
     
     if (ville.value.trim()==""){
         
@@ -171,13 +242,13 @@ formulaire.addEventListener('submit',function (f){
         f.preventDefault();
     }
     else {
-        ville.style.border='1px dashed green';
+        ville.style.border       ='1px dashed green';
         erreurVille.style.display="none";
     }
     
 // 5- Le champs code postal
     
-    let codepostal=document.querySelector("#code_postal");
+    let codepostal      =document.querySelector("#code_postal");
     let erreurCodepostal=document.getElementById('erreurCodepostal');
     let regexcodepostal =/^(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}$/;
     
@@ -202,9 +273,9 @@ formulaire.addEventListener('submit',function (f){
 
 // 6- Le champs Email
 
-    let mail=document.querySelector("#mail");
+    let mail      =document.querySelector("#mail");
     let erreurMail=document.getElementById('erreurMail');
-    let regexmail=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let regexmail =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
     if (mail.value.trim()==""){
         
@@ -221,15 +292,15 @@ formulaire.addEventListener('submit',function (f){
         f.preventDefault();
     }
     else {
-        mail.style.border='1px dashed green';
+        mail.style.border       ='1px dashed green';
         erreurMail.style.display="none";
     }
    
 // 7- Le champs N° Tél
 
-    let tel=document.querySelector("#tel");
+    let tel      =document.querySelector("#tel");
     let erreurTel=document.getElementById('erreurTel');
-    let regextel=/^(0|\+33)[1-9]([-._\s]?[0-9]{2}){4}$/
+    let regextel =/^(0|\+33)[1-9]([-._\s]?[0-9]{2}){4}$/
     
     if (tel.value.trim()==""){
         
@@ -246,10 +317,9 @@ formulaire.addEventListener('submit',function (f){
         f.preventDefault();
     }
     else {
-        tel.style.border='1px dashed green';
+        tel.style.border       ='1px dashed green';
         erreurTel.style.display="none";
         }
-// Fin écoute submit
 
 // Récupérer les données saisies du formulaire
 
@@ -297,12 +367,14 @@ promise.then(async(response)=>{
     try{
         const retourServeur=await response.json();
         console.log("OrderId: ",retourServeur.orderId);
+        
         let commandeInfos={
             identifiant:retourServeur.orderId,
             prix_a_payer:prix_a_payer,
             nomContact:retourServeur.contact.firstName,
             prenomContact:retourServeur.contact.lastName
         }
+
         // Vider le localStorage (panier et données formulaire)
         localStorage.clear();
 

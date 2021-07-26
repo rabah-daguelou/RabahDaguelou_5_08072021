@@ -18,6 +18,5 @@ localStorage.clear();
 // Vider Local storage
 accueil.onclick=()=> {
     document.location.href="index.html";
-
 }
 
