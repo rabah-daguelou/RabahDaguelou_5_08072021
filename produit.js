@@ -71,10 +71,10 @@ fetch(api2)
 		quantite_commandee.addEventListener("input", function(){
 			let quant=document.getElementById('quantite_commandee').value;
 			let quantite=parseInt(quant);
-							
-			if(quantite<0){
+					
+			if (quantite<=0){
 			alert('Merci de saisir une quantité supérieure à 0 !');
-			quantite_choisie.value=0;
+			quantite_choisie.value==0;
 			}else{
 
 				document.getElementById('quant_com').innerText=quantite;
@@ -86,6 +86,7 @@ fetch(api2)
 	// Au clic sur ajouter au panier
  		
  		panier.onclick=()=> {
+ 			
  			document.getElementById('total_article').innerText;
  			let total=document.getElementById('total_article').textContent;
  			total    =parseInt(total)+quantite;
@@ -116,8 +117,8 @@ if (confirm(quantite+ "  produit(s) ajouté(s) au panier. \nContinuer les achats
 }else{
 	document.location.href="panier.html";
 }
-
 }
+
 
 // Possibilité de vider le panier et renoncer aux achats
 

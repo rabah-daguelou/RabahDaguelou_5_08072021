@@ -18,9 +18,35 @@ document.getElementById("votre_panier").textContent=total+"  article(s)";
 // Fin fonction
 
 miseAjour();
+let nouveauPanier=[];
+
+for(let i=0;i<paniers.length;i++){
+    let article=paniers[i];
+    let key=paniers[i].nom+"_"+paniers[i].couleur;
+    
+    
+if(nouveauPanier.hasOwnProperty(key)){
+      nouveauPanier[key].quantite=paniers[i].quantite+nouveauPanier[key].quantite;
+       nouveauPanier[key].prix=paniers[i].prix+nouveauPanier[key].prix;
+        console.log(key)
+    }else{
+        nouveauPanier[key]=article;
+    }
+};
+console.log("ici");
+console.log(nouveauPanier);
+paniers=[];
+
+// Mettre les éléments de nouveauxPanier dans paniers
+for (let [key, value] of Object.entries(nouveauPanier)) {
+   paniers.push(value);
+}
+    
+//Création des éléments html de la carte produit 
 
 //Création des éléments html de la carte produit 
-paniers=JSON.parse(localStorage.getItem('paniers'));
+localStorage.setItem('paniers',JSON.stringify(paniers));
+
 for (let i in paniers) {  
 
     let lien                =document.createElement("a");
@@ -390,4 +416,3 @@ promise.then(async(response)=>{
     }
     
 });
-        
