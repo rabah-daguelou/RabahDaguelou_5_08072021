@@ -1,5 +1,5 @@
 # Orinoco #
-Est le projet 5 de ma formation OpenClassrooms. J'ai gardé le code source tel qu'il a été présenté à la soutenance sans aucun ajout ou modification.
+Est le projet 5 de ma formation OpenClassrooms. J'ai gardé le code source tel qu'il a été présenté à la soutenance sans aucun ajout ni modification.
 ### Pour le lancer chez vous ###
 Vous devez avoir NodeJs installé sur votre machine.
 Si ce n'est pas le cas: 
@@ -8,6 +8,7 @@ Si ce n'est pas le cas:
 - exemple: sur mon bureau avec gitbush: 
 git clone https://github.com/rabah-daguelou/RabahDaguelou_5_08072021
 - Accédez au dossier backend du dossier cloné: cd backend
+- Lancez la commande: npm install puis,  
 - Lancez la commande: node server ( Vous devrez avoir la réponse suivante: Listening on port 3000
 - Exécutez le fichier frontend/html/index.html sur votre navigateur
 
